@@ -1,0 +1,50 @@
+Case 1
+incompatbile heat 
+initial: zeros(Np,Nx);
+boundary: ones(Np,1)
+0.56
+document: Reference/Heat_compatible_initial.m
+
+Case 2
+boundary, compatible heat
+initial: ones(Np,1)*(sin(pi*x)+1.5)
+boundary: 1.5+100*t*abs( v )
+1.06
+document: Reference/Heat_compatible.m
+
+Case 3
+boundary + initial-boundary, compatible heat
+initial: 0.71*ones(Np,Nx-2)
+boundary: abs( v )
+1.09
+document: Reference/Heat_compatible_test.m
+
+Case 4
+boundary + initial-boundary, compatible heat
+initial: eta*(1+0.25*sin(pi*x))
+boundary: abs( v )
+0.78 for [-0.98,0.98]
+
+Case 5
+initial + boundary + initial-boundary, compatible heat
+initial: (abs(v)*eta+eta/2)*ones(1,Nx),
+boundary abs(v)*(1+100*t);
+0.68 for [-0.98,0.98] and 0.64 for [-0.95, 0.95]
+document: Reference_to_play Heat_to_play
+
+Case 6
+initial + boundary + initial-boundary, incompatible heat
+initial: abs(v)*ones(1,Nx),
+boundary abs(v):
+0.68 for [-0.98,0.98] and 0.57 for [-0.93, 0.93]
+document: Reference, Heat
+
+Case 7 
+initial, compatible heat
+initial: sin(pi*x) * (1 + abs(v))
+boundary: 0 
+
+Case 8
+compatible heat
+initial: sin(pi*x)
+boundary: 0
